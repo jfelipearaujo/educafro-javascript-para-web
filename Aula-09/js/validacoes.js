@@ -29,11 +29,7 @@ function validarPaciente(paciente) {
     erros.push("Nome inválido");
   }
 
-  if (paciente.peso.length == 0) {
-    erros.push("Peso não informado");
-  }
-
-  if (!validarPeso(paciente.peso)) {
+  if (paciente.peso.length == 0 || !validarPeso(paciente.peso)) {
     erros.push("Peso inválido");
   }
 

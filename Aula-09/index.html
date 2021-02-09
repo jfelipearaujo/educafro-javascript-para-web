@@ -1,9 +1,12 @@
 <!--
  Assuntos abordados:
 
- - reaproveitar as validações e criar novas
- - trabalhar com diversos erros
- - utilizar lista para exibir os erros
+ - integrar com outro sistema
+  -> https://api-pacientes.herokuapp.com/pacientes
+ - transformar um texto (string) em objetos do javascript
+ - refatorar a forma de adicionar um paciente na tabela
+ - adicionar dados na tabela
+ - AJAX -> requisição assíncrona
 -->
 
 <!DOCTYPE html>
@@ -24,13 +27,17 @@
     <main>
       <section class="container">
         <h2>Meus pacientes</h2>
+
+        <label for="filtrar-tabela">Filtrar paciente</label>
+        <input type="text" name="filtro" id="filtrar-tabela" placeholder="Digite o nome do paciente" />
+
         <table>
           <thead>
             <tr>
               <th>Nome</th>
               <th>Peso(kg)</th>
               <th>Altura(m)</th>
-              <th>Gordura Corporal(%)</th>
+              <th>Gordura Corporal (%)</th>
               <th>IMC</th>
             </tr>
           </thead>
@@ -75,6 +82,9 @@
             </tr>
           </tbody>
         </table>
+
+        <span id="erro-ajax" class="invisivel">Erro ao buscar os pacientes</span>
+        <button id="buscar-pacientes" class="botao bto-principal">Buscar pacientes</button>
       </section>
     </main>
 
@@ -86,14 +96,7 @@
       <form id="frm-novo-paciente">
         <div class="grupo">
           <label for="nome">Nome:</label>
-          <input
-            id="nome"
-            name="nome"
-            type="text"
-            placeholder="digite o nome do seu paciente"
-            class="campo"
-            onkeypress="return testeTeclado(event)"
-          />
+          <input id="nome" name="nome" type="text" placeholder="digite o nome do seu paciente" class="campo" />
         </div>
         <div class="grupo">
           <label for="peso">Peso:</label>
@@ -133,5 +136,8 @@
     <script src="js/validacoes.js"></script>
     <script src="js/calcula-imc.js"></script>
     <script src="js/form.js"></script>
+    <script src="js/remover-paciente.js"></script>
+    <script src="js/filtrar-paciente.js"></script>
+    <script src="js/buscar-pacientes.js"></script>
   </body>
 </html>

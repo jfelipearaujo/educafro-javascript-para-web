@@ -15,14 +15,18 @@ btnAdicionar.addEventListener("click", function (event) {
     return;
   }
 
+  adicionarPacienteNaTabela(paciente);
+
+  form.reset();
+});
+
+function adicionarPacienteNaTabela(paciente) {
   var trNovoPaciente = obtemTrPaciente(paciente);
 
   var tblPacientes = document.querySelector("#tabela-pacientes");
 
   tblPacientes.appendChild(trNovoPaciente);
-
-  form.reset();
-});
+}
 
 function obtemDadosPaciente(form) {
   var paciente = {
@@ -62,8 +66,4 @@ function criarTdComClasse(classe, valor) {
   td.textContent = valor;
 
   return td;
-}
-
-function testeTeclado(evento) {
-  console.log(evento);
 }
